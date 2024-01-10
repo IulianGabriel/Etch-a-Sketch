@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik+Doodle+Shadow&family=Rubik+Scribble&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: #191919;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Page Layout */
+
+.title {
+  text-align: center;
+  color: white;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  max-width: 100%;
+  height: 100%;
+}
+
+.controls {
+  width: 30rem;
+  height: 66rem;
+  background-color: #202020;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.grid-wrapper {
+  background-color: #202020;
+  width: 66rem;
+  height: 66rem;
+  border-radius: 0.5rem;
+}
+
+.grid-container {
+  display: grid;
+}
+
+/* Styling */
+
+.header {
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.title {
+  font-size: 4.8rem;
+  font-family: "Rubik Scribble", system-ui;
+  color: #7f00ff;
+  text-align: center;
+}
+
+input[type="color"] {
+  appearance: none;
+  border: none;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  padding: 0;
+  margin-bottom: 2.5rem;
+}
+
+/* Modify default color input (make it round) */
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.select-color:hover {
+  transform: scale(1.05);
+  transition: 0.25s all;
+}
+
+button {
+  width: 80%;
+  height: 3.5rem;
+  background-color: transparent;
+  border: 1px solid #7f00ff;
+  border-radius: 0.5rem;
+  color: #7f00ff;
+  font-size: 1.6rem;
+  font-family: "Roboto", sans-serif;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: 0.25s all;
+}
+
+button:active {
+  background-color: #7f00ff;
+  color: #202020;
+}
+
+.grid-size-text {
+  font-size: 2.4rem;
+  color: #a041ff;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Modify default slider */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 1rem;
+  background: transparent;
+  opacity: 1;
+  border: 1px solid #7f00ff;
+  border-radius: 2rem;
+}
+
+input[type="range"]:hover {
+  filter: brightness(105%);
+  transition: 0.25s all;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #7f00ff;
+  cursor: pointer;
+  border-radius: 50%;
+}
