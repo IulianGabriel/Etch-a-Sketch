@@ -7,7 +7,21 @@
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    
+    <h1 class="title">Etch-a-Sketch</h1>
+    <div class="controls">
+        <input type="color" class="select-color">
+        <button class="color-mode">Color mode</button>
+        <button class="rainbow-mode">Rainbow mode</button>
+        <button class="color-grabber">Color Grabber</button>
+        <button class="eraser">Eraser</button>
+        <input type="range" value="16" min="1" max="64" class="grid-size-slider">
+        <p class="grid-size-text">Grid size: 16 x 16</p>
+        <button class="grid-btn">Toggle Grid Lines</button>
+        <button class="Clear">Clear grid</button>
+    </div>
+    <div class="grid-wrapper">
+        <div class="grid-container toggle-grid" draggable="false"></div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
