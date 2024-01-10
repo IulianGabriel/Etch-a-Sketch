@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik+Doodle+Shadow&family=Rubik+Scribble&display=swap");
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -42,18 +42,26 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  border-radius: 0.5rem;
 }
 
 .grid-wrapper {
   background-color: #202020;
   width: 66rem;
   height: 66rem;
-  border-radius: 0.5rem;
+  background-color: white; 
 }
 
 .grid-container {
   display: grid;
+}
+
+.grid-cell {
+  border-top: 1px solid rgb(156, 156, 156);
+  border-left: 1px solid rgb(156, 156, 156);
+}
+
+.hidden{
+    visibility: hidden;
 }
 
 /* Styling */
