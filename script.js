@@ -1,4 +1,6 @@
-// Declare Variables
+const RGB_MAX = 256;
+const WRAPPER_WIDTH_AND_HEIGHT = 660;
+let isMouseDown = false;
 const gridContainer = document.querySelector(".grid-container");
 const gridSizeSlider = document.querySelector(".grid-size-slider");
 const gridSizeText = document.querySelector(".grid-size-text");
@@ -8,18 +10,26 @@ const rainbowMode = document.querySelector(".rainbow-mode");
 const colorMode = document.querySelector(".color-mode");
 const clearGrid = document.querySelector(".clear");
 const eraser = document.querySelector(".eraser");
-let isMouseDown = false;
 
-// Add event listeners
 document.addEventListener("mousedown", () => {
   isMouseDown = true; // While you keep your click pressed, mouseDown will be true. (this helps with brushing while holding click)
 });
 document.addEventListener("mouseup", () => {
-  isMouseDown = false; // When you stop pressing your click, mouseDown becomes false. (this stops the brush when you are not holding click)
+  isMouseDown = false; // When you stop pressing click, mouseDown becomes false. (this stops the brush when you are not holding click)
 });
-gridContainer.addEventListener("mousemove", drawOnClick);
-gridContainer.addEventListener("mousemove", eraseOnClick);
-gridContainer.addEventListener("mouseover", drawRandomColors);
+
+gridContainer.addEventListener("mousemove", (event) => {
+  if (isMouseDown) {
+    if (colorMode.classList.contains("on-toggle-colorMode")) {
+      drawOnClick(event);
+    } else if (eraser.classList.contains("on-toggle-eraser")) {
+      eraseOnClick(event);
+    } else if (rainbowMode.classList.contains("on-toggle-rainbowMode")) {
+      drawRandomColors(event);
+    }
+  }
+});
+
 gridSizeSlider.addEventListener("input", createGrid);
 toggleGridButton.addEventListener("click", toggleGrid);
 colorMode.addEventListener("click", toggleColorMode);
@@ -27,18 +37,17 @@ clearGrid.addEventListener("click", clearCanvas);
 eraser.addEventListener("click", toggleEraser);
 rainbowMode.addEventListener("click", toggleRainbowMode);
 
-// Create and update grid on page.
 function createGrid() {
   let defaultSize = gridSizeSlider.value;
-  const wrapperMeasurements = 660;
-  gridSizeText.textContent = `${defaultSize} x ${defaultSize}`;
+  const wrapperMeasurements = WRAPPER_WIDTH_AND_HEIGHT;
+  gridSizeText.innerText = `${defaultSize} x ${defaultSize}`;
   gridContainer.innerHTML = "";
   gridContainer.style.gridTemplateColumns = `repeat(${defaultSize}, 1fr)`; // Set grid columns based on 'defaultSize' with equal fractions.
 
   for (let i = 0; i < defaultSize; i++) {
     for (let j = 0; j < defaultSize; j++) {
       const newDiv = document.createElement("div");
-      newDiv.className = "grid-cell";
+      newDiv.classList.add("grid-cell");
       newDiv.setAttribute("draggable", false);
       newDiv.style.width = `${wrapperMeasurements / defaultSize}px`;
       newDiv.style.height = `${wrapperMeasurements / defaultSize}px`;
@@ -49,7 +58,6 @@ function createGrid() {
 
 createGrid();
 
-// Toggle grid lines on/off
 function toggleGrid() {
   const gridCells = document.querySelectorAll(".grid-cell");
   gridCells.forEach((cell) => {
@@ -65,58 +73,38 @@ function toggleGrid() {
   });
 }
 
-// Color mode "Brush" + functionality.
 function toggleColorMode() {
-  if (!colorMode.classList.contains("on-toggle-colorMode")) {
-    colorMode.classList.add("on-toggle-colorMode");
-    eraser.classList.remove("on-toggle-eraser");
-    rainbowMode.classList.remove("on-toggle-rainbowMode");
-  } else {
-    colorMode.classList.remove("on-toggle-colorMode");
-  }
+  colorMode.classList.toggle("on-toggle-colorMode");
+  eraser.classList.remove("on-toggle-eraser");
+  rainbowMode.classList.remove("on-toggle-rainbowMode");
 }
 
 function drawOnClick(event) {
-  if (isMouseDown && colorMode.classList.contains("on-toggle-colorMode")) {
-    const selectedColor = selectColor.value;
-    event.target.style.backgroundColor = selectedColor;
-  }
+  const selectedColor = selectColor.value;
+  event.target.style.backgroundColor = selectedColor;
 }
 
-// eraser toggle + functionality
 function toggleEraser() {
-  if (!eraser.classList.contains("on-toggle-eraser")) {
-    eraser.classList.add("on-toggle-eraser");
-    colorMode.classList.remove("on-toggle-colorMode");
-    rainbowMode.classList.remove("on-toggle-rainbowMode");
-  } else {
-    eraser.classList.remove("on-toggle-eraser");
-  }
+  eraser.classList.toggle("on-toggle-eraser");
+  colorMode.classList.remove("on-toggle-colorMode");
+  rainbowMode.classList.remove("on-toggle-rainbowMode");
 }
 
 function eraseOnClick(event) {
-  if (isMouseDown && eraser.classList.contains("on-toggle-eraser")) {
-    event.target.style.backgroundColor = "white";
-  }
+  event.target.style.backgroundColor = "white";
 }
 
 function toggleRainbowMode() {
-  if (!rainbowMode.classList.contains("on-toggle-rainbowMode")) {
-    rainbowMode.classList.add("on-toggle-rainbowMode");
-    eraser.classList.remove("on-toggle-eraser");
-    colorMode.classList.remove("on-toggle-colorMode");
-  } else {
-    rainbowMode.classList.remove("on-toggle-rainbowMode");
-  }
+  rainbowMode.classList.toggle("on-toggle-rainbowMode");
+  eraser.classList.remove("on-toggle-eraser");
+  colorMode.classList.remove("on-toggle-colorMode");
 }
 
 function drawRandomColors(event) {
-  const randomR = Math.floor(Math.random() * 256);
-  const randomG = Math.floor(Math.random() * 256);
-  const randomB = Math.floor(Math.random() * 256);
-  if (isMouseDown && rainbowMode.classList.contains("on-toggle-rainbowMode")) {
-    event.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-  }
+  const randomR = Math.floor(Math.random() * RGB_MAX);
+  const randomG = Math.floor(Math.random() * RGB_MAX);
+  const randomB = Math.floor(Math.random() * RGB_MAX);
+  event.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
 }
 
 function clearCanvas() {
