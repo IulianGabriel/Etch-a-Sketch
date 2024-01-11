@@ -1,12 +1,15 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Rubik+Doodle+Shadow&family=Rubik+Scribble&display=swap");
 
+/* Reset Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Set base font size for responsive design */
 html {
   font-size: 62.5%;
   background-color: #191919;
@@ -19,7 +22,6 @@ body {
 }
 
 /* Page Layout */
-
 .title {
   text-align: center;
   color: white;
@@ -28,9 +30,11 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   max-width: 100%;
+  justify-content: center;
+  gap: 15rem;
   height: 100%;
+  margin-top: 10rem;
 }
 
 .controls {
@@ -66,8 +70,7 @@ body {
   border-color: transparent;
 }
 
-/* Styling */
-
+/* Header Styling */
 .header {
   height: 8rem;
   display: flex;
@@ -82,6 +85,8 @@ body {
   text-align: center;
 }
 
+/* Input Styling */
+
 input[type="color"] {
   appearance: none;
   border: none;
@@ -91,8 +96,6 @@ input[type="color"] {
   padding: 0;
   margin-bottom: 2.5rem;
 }
-
-/* Modify default color input (make it round) */
 
 input[type="color"]::-webkit-color-swatch-wrapper {
   border: none;
@@ -110,6 +113,8 @@ input[type="color"]::-webkit-color-swatch {
   transform: scale(1.05);
   transition: 0.25s all;
 }
+
+/* Button Styling */
 
 button {
   width: 80%;
@@ -145,7 +150,7 @@ button:active {
   font-family: "Roboto", sans-serif;
 }
 
-/* Modify default slider */
+/* Slider Styling */
 
 input[type="range"] {
   -webkit-appearance: none;
@@ -169,4 +174,22 @@ input[type="range"]::-webkit-slider-thumb {
   background: #7f00ff;
   cursor: pointer;
   border-radius: 50%;
+}
+
+/* Footer Styling */
+
+footer{
+  text-align: center;
+  margin-top: 5rem;
+  height: 5rem;
+}
+.copyright{
+  color: white;
+  font-size: 2.4rem;
+  font-family: "Roboto", sans-serif;
+}
+.logo-image{
+  width: 2.4rem;
+  height: 2.4rem;
+  padding-top: 0.5rem
 }

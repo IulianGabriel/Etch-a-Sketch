@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/paint-brush_2003400.png" type="image/png" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -11,29 +12,43 @@
     <title>Etch-a-Sketch</title>
   </head>
   <body>
-    <div class="header">
-      <h1 class="title">Etch-a-Sketch</h1>
-    </div>
-    <div class="wrapper">
-      <div class="controls">
-        <input type="color" class="select-color" value="#7f00ff" />
-        <button class="color-mode">Color mode</button>
-        <button class="rainbow-mode">Rainbow mode</button>
-        <button class="eraser">Eraser</button>
-        <p class="grid-size-text">16 x 16</p>
-        <input
-          type="range"
-          value="16"
-          min="1"
-          max="64"
-          class="grid-size-slider"
-        />
-        <button class="grid-btn">Toggle Grid Lines</button>
-        <button class="clear">Clear grid</button>
+    <div>
+      <div class="header">
+        <h1 class="title">Etch-a-Sketch</h1>
       </div>
-      <div class="grid-wrapper">
-        <div class="grid-container hidden" draggable="false"></div>
+      <div class="wrapper">
+        <div class="controls">
+          <input type="color" class="select-color" value="#7f00ff" />
+          <button class="color-mode">Color mode</button>
+          <button class="rainbow-mode">Rainbow mode</button>
+          <button class="eraser">Eraser</button>
+          <p class="grid-size-text">16 x 16</p>
+          <input
+            type="range"
+            value="16"
+            min="1"
+            max="64"
+            class="grid-size-slider"
+          />
+          <button class="grid-btn">Toggle Grid Lines</button>
+          <button class="clear">Clear grid</button>
+        </div>
+        <div class="grid-wrapper">
+          <div class="grid-container hidden" draggable="false"></div>
+        </div>
       </div>
+      <footer>
+        <p class="copyright">
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          Iulian Gabriel
+          <a href="https://github.com/IulianGabriel" target="_blank">
+            <img class="logo-image" src="githubIcon.gif" alt="github Icon" />
+          </a>
+        </p>
+      </footer>
     </div>
     <script src="script.js"></script>
   </body>
