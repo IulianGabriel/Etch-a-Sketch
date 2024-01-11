@@ -4,10 +4,12 @@ const gridSizeSlider = document.querySelector(".grid-size-slider");
 const gridSizeText = document.querySelector(".grid-size-text");
 const toggleGridButton = document.querySelector(".grid-btn");
 const selectColor = document.querySelector(".select-color");
-
+const colorMode = document.querySelector(".color-mode");
+let isMouseDown = false;
 gridSizeSlider.addEventListener("input", createGrid);
 toggleGridButton.addEventListener("click", toggleGrid);
-selectColor.addEventListener("input", getColorValue);
+colorMode.addEventListener("click", toggleColorMode);
+
 
 // Create and update grid on page.
 function createGrid() {
@@ -21,6 +23,7 @@ function createGrid() {
     for (let j = 0; j < defaultSize; j++) {
       const newDiv = document.createElement("div");
       newDiv.className = "grid-cell";
+      newDiv.setAttribute("draggable", false);
       newDiv.style.width = `${wrapperMeasurements / defaultSize}px`;
       newDiv.style.height = `${wrapperMeasurements / defaultSize}px`;
       gridContainer.appendChild(newDiv);
@@ -42,19 +45,12 @@ function toggleGrid() {
   }
 }
 
-function hexToRgb(hex) {
-  hex = hex.replace(/^#/, "");
-  const bigint = parseInt(hex, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-
-  //Return RGB values as an object.
-  return { r, g, b };
+function toggleColorMode() {
+  if (!colorMode.classList.contains("on-toggle")) {
+    colorMode.classList.add("on-toggle");
+  } else {
+    colorMode.classList.remove("on-toggle");
+  }
 }
 
-function getColorValue() {
-  const selectedColor = selectColor.value;
-  const rgbColor = hexToRgb(selectedColor)
-  console.log(rgbColor)
-}
+

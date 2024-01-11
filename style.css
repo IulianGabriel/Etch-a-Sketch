@@ -61,7 +61,7 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
+  opacity: 0;
 }
 
 /* Styling */
@@ -126,6 +126,11 @@ button:hover {
 }
 
 button:active {
+  background-color: #7f00ff;
+  color: #202020;
+}
+
+.on-toggle{
   background-color: #7f00ff;
   color: #202020;
 }
