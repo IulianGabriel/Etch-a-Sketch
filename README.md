@@ -21,6 +21,11 @@
 2. Draw on the canvas.
 3. Enjoy!
 
+## Technologies used
+- HTML5
+- CSS3
+- JavaScript
+
 ## Installation
 
 1. Clone the repository:
