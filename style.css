@@ -53,6 +53,7 @@ body {
 
 .grid-container {
   display: grid;
+  cursor: pointer;
 }
 
 .grid-cell {
@@ -61,7 +62,7 @@ body {
 }
 
 .hidden {
-  opacity: 0;
+border-color: transparent;
 }
 
 /* Styling */

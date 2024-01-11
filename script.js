@@ -10,7 +10,6 @@ gridSizeSlider.addEventListener("input", createGrid);
 toggleGridButton.addEventListener("click", toggleGrid);
 colorMode.addEventListener("click", toggleColorMode);
 
-
 // Create and update grid on page.
 function createGrid() {
   let defaultSize = gridSizeSlider.value;
@@ -34,15 +33,18 @@ function createGrid() {
 createGrid();
 
 function toggleGrid() {
-  if (gridContainer.classList.contains("hidden")) {
-    gridContainer.classList.remove("hidden");
-    toggleGridButton.style.backgroundColor = "#7f00ff";
-    toggleGridButton.style.color = "#202020";
-  } else {
-    gridContainer.classList.add("hidden");
-    toggleGridButton.style.backgroundColor = "";
-    toggleGridButton.style.color = "";
-  }
+  const gridCells = document.querySelectorAll(".grid-cell");
+  gridCells.forEach((cell) => {
+    if (cell.classList.contains("hidden")) {
+      cell.classList.remove("hidden");
+      toggleGridButton.style.backgroundColor = "";
+      toggleGridButton.style.color = "";
+    } else {
+      cell.classList.add("hidden");
+      toggleGridButton.style.backgroundColor = "#7f00ff";
+      toggleGridButton.style.color = "#202020";
+    }
+  });
 }
 
 function toggleColorMode() {
