@@ -6,6 +6,14 @@ const toggleGridButton = document.querySelector(".grid-btn");
 const selectColor = document.querySelector(".select-color");
 const colorMode = document.querySelector(".color-mode");
 let isMouseDown = false;
+
+gridContainer.addEventListener("mousedown", () => {
+  isMouseDown = true;
+});
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
+gridContainer.addEventListener("mousemove", handleCellHover);
 gridSizeSlider.addEventListener("input", createGrid);
 toggleGridButton.addEventListener("click", toggleGrid);
 colorMode.addEventListener("click", toggleColorMode);
@@ -48,23 +56,15 @@ function toggleGrid() {
 }
 
 function toggleColorMode() {
-  if (!colorMode.classList.contains("on-toggle")) {
-    colorMode.classList.add("on-toggle");
+  if (!colorMode.classList.contains("on-toggle-colorMode")) {
+    colorMode.classList.add("on-toggle-colorMode");
   } else {
-    colorMode.classList.remove("on-toggle");
+    colorMode.classList.remove("on-toggle-colorMode");
   }
 }
 
-gridContainer.addEventListener("mousedown", () => {
-  isMouseDown = true;
-});
-document.addEventListener("mouseup", () => {
-  isMouseDown = false;
-});
-gridContainer.addEventListener("mousemove", handleCellHover);
-
 function handleCellHover(event) {
-  if (isMouseDown && colorMode.classList.contains("on-toggle")) {
+  if (isMouseDown && colorMode.classList.contains("on-toggle-colorMode")) {
     const selectedColor = selectColor.value;
     event.target.style.backgroundColor = selectedColor;
   }

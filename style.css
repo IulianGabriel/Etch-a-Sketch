@@ -59,6 +59,7 @@ body {
 .grid-cell {
   border-top: 1px solid rgb(156, 156, 156);
   border-left: 1px solid rgb(156, 156, 156);
+  user-select: none;
 }
 
 .hidden {
@@ -131,7 +132,7 @@ button:active {
   color: #202020;
 }
 
-.on-toggle{
+.on-toggle-colorMode{
   background-color: #7f00ff;
   color: #202020;
 }
