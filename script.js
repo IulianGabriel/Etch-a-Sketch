@@ -53,4 +53,17 @@ function toggleColorMode() {
   }
 }
 
+gridContainer.addEventListener("mousedown", () => {
+  isMouseDown = true;
+});
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
+});
+gridContainer.addEventListener("mousemove", handleCellHover);
 
+function handleCellHover(event) {
+  if (isMouseDown && colorMode.classList.contains("on-toggle")) {
+    const selectedColor = selectColor.value;
+    event.target.style.backgroundColor = selectedColor;
+  }
+}
