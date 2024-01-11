@@ -1,8 +1,8 @@
 // Declare Constants
 const RGB_MAX = 256;
-const WRAPPER_WIDTH_AND_HEIGHT = 660;
 
 // Declare Variables
+let wrapperMeasurements;
 let isMouseDown = false;
 const gridContainer = document.querySelector(".grid-container");
 const gridSizeSlider = document.querySelector(".grid-size-slider");
@@ -13,6 +13,21 @@ const rainbowMode = document.querySelector(".rainbow-mode");
 const colorMode = document.querySelector(".color-mode");
 const clearGrid = document.querySelector(".clear");
 const eraser = document.querySelector(".eraser");
+
+// Function to dynamically adjust grid dimensions based on window width
+function adjustGridSize() {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth >= 1150) {
+    wrapperMeasurements = 660;
+  } else if (windowWidth <= 1150 && windowWidth > 875) {
+    wrapperMeasurements = 500;
+  } else if (windowWidth <= 875) {
+    wrapperMeasurements = 350;
+  }
+}
+adjustGridSize();
+window.addEventListener("resize", adjustGridSize);
 
 // Add event listeners
 
@@ -51,7 +66,6 @@ rainbowMode.addEventListener("click", toggleRainbowMode);
 // Create and update grid on page.
 function createGrid() {
   let defaultSize = gridSizeSlider.value;
-  const wrapperMeasurements = WRAPPER_WIDTH_AND_HEIGHT;
   gridSizeText.innerText = `${defaultSize} x ${defaultSize}`;
   gridContainer.innerHTML = "";
   gridContainer.style.gridTemplateColumns = `repeat(${defaultSize}, 1fr)`; // Set grid columns based on 'defaultSize' with equal fractions.
@@ -74,6 +88,7 @@ createGrid();
 // Toggle grid lines on/off
 function toggleGrid() {
   const gridCells = document.querySelectorAll(".grid-cell");
+
   gridCells.forEach((cell) => {
     if (cell.classList.contains("hidden")) {
       // Show grid
