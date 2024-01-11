@@ -1,7 +1,7 @@
 <h1 align="center">Etch-a-Sketch App</h1>
 
 <p align="center">
-  <img src="AmongUs.png" alt="Etch-a-Sketch App" width="600">
+  <img src="AmongUs.png" alt="Etch-a-Sketch App" width="1000">
 </p>
 
 <p align="center">
