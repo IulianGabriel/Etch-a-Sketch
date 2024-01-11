@@ -137,6 +137,11 @@ button:active {
   color: #202020;
 }
 
+.on-toggle-eraser{
+  background-color: #7f00ff;
+  color: #202020;
+}
+
 .grid-size-text {
   font-size: 2.4rem;
   color: #a041ff;
