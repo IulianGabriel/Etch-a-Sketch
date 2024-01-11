@@ -63,7 +63,7 @@ body {
 }
 
 .hidden {
-border-color: transparent;
+  border-color: transparent;
 }
 
 /* Styling */
@@ -132,12 +132,9 @@ button:active {
   color: #202020;
 }
 
-.on-toggle-colorMode{
-  background-color: #7f00ff;
-  color: #202020;
-}
-
-.on-toggle-eraser{
+.on-toggle-colorMode,
+.on-toggle-eraser,
+.on-toggle-rainbowMode {
   background-color: #7f00ff;
   color: #202020;
 }

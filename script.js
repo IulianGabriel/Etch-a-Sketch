@@ -4,6 +4,7 @@ const gridSizeSlider = document.querySelector(".grid-size-slider");
 const gridSizeText = document.querySelector(".grid-size-text");
 const toggleGridButton = document.querySelector(".grid-btn");
 const selectColor = document.querySelector(".select-color");
+const rainbowMode = document.querySelector(".rainbow-mode");
 const colorMode = document.querySelector(".color-mode");
 const clearGrid = document.querySelector(".clear");
 const eraser = document.querySelector(".eraser");
@@ -18,12 +19,13 @@ document.addEventListener("mouseup", () => {
 });
 gridContainer.addEventListener("mousemove", drawOnClick);
 gridContainer.addEventListener("mousemove", eraseOnClick);
+gridContainer.addEventListener("mouseover", drawRandomColors);
 gridSizeSlider.addEventListener("input", createGrid);
 toggleGridButton.addEventListener("click", toggleGrid);
 colorMode.addEventListener("click", toggleColorMode);
 clearGrid.addEventListener("click", clearCanvas);
 eraser.addEventListener("click", toggleEraser);
-
+rainbowMode.addEventListener("click", toggleRainbowMode);
 
 // Create and update grid on page.
 function createGrid() {
@@ -68,6 +70,7 @@ function toggleColorMode() {
   if (!colorMode.classList.contains("on-toggle-colorMode")) {
     colorMode.classList.add("on-toggle-colorMode");
     eraser.classList.remove("on-toggle-eraser");
+    rainbowMode.classList.remove("on-toggle-rainbowMode");
   } else {
     colorMode.classList.remove("on-toggle-colorMode");
   }
@@ -85,6 +88,7 @@ function toggleEraser() {
   if (!eraser.classList.contains("on-toggle-eraser")) {
     eraser.classList.add("on-toggle-eraser");
     colorMode.classList.remove("on-toggle-colorMode");
+    rainbowMode.classList.remove("on-toggle-rainbowMode");
   } else {
     eraser.classList.remove("on-toggle-eraser");
   }
@@ -93,6 +97,25 @@ function toggleEraser() {
 function eraseOnClick(event) {
   if (isMouseDown && eraser.classList.contains("on-toggle-eraser")) {
     event.target.style.backgroundColor = "white";
+  }
+}
+
+function toggleRainbowMode() {
+  if (!rainbowMode.classList.contains("on-toggle-rainbowMode")) {
+    rainbowMode.classList.add("on-toggle-rainbowMode");
+    eraser.classList.remove("on-toggle-eraser");
+    colorMode.classList.remove("on-toggle-colorMode");
+  } else {
+    rainbowMode.classList.remove("on-toggle-rainbowMode");
+  }
+}
+
+function drawRandomColors(event) {
+  const randomR = Math.floor(Math.random() * 256);
+  const randomG = Math.floor(Math.random() * 256);
+  const randomB = Math.floor(Math.random() * 256);
+  if (isMouseDown && rainbowMode.classList.contains("on-toggle-rainbowMode")) {
+    event.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
   }
 }
 
